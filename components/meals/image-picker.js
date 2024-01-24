@@ -15,7 +15,8 @@ export default function ImagePicker({ label, name }) {
   function handleImageChange(e) {
     const file = e.target.files[0];
     if (!file) {
-      return setImagePreview(null);
+      setImagePreview(null);
+      return;
     }
     const reader = new FileReader();
     reader.onload = function () {
@@ -42,6 +43,7 @@ export default function ImagePicker({ label, name }) {
           accept="image/png, image/jpeg"
           ref={imagePicker}
           onChange={handleImageChange}
+          required
         />
         <button
           className={classes.button}
